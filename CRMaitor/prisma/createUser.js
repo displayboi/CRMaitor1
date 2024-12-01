@@ -4,16 +4,34 @@ import bcrypt from 'bcryptjs';
 const prisma = new PrismaClient();
 
 async function createUser() {
-  const hashedPassword = await bcrypt.hash('admin', 10); // Encripta la contraseña
-  const user = await prisma.user.create({
-    data: {
-      username: 'admin',
-      password: hashedPassword,
-    },
-  });
-  console.log('Usuario creado:', user);
+  try {
+    const username = 'admin';
+    const plainPassword = 'admin';
+
+    // Valida los datos de entrada
+    if (!username || !plainPassword) {
+      throw new Error('El nombre de usuario y la contraseña son obligatorios');
+    }
+
+    const hashedPassword = await bcrypt.hash(plainPassword, 10); // Encripta la contraseña
+
+    const user = await prisma.user.create({
+      data: {
+        username,
+        password: hashedPassword,
+      },
+    });
+
+    console.log('Usuario creado:', user);
+  } catch (error) {
+    if (error.code === 'P2002') {
+      console.error('Error: El nombre de usuario ya existe.');
+    } else {
+      console.error('Error al crear el usuario:', error.message);
+    }
+  } finally {
+    await prisma.$disconnect();
+  }
 }
 
-createUser()
-  .catch((e) => console.error(e))
-  .finally(() => prisma.$disconnect());
+createUser();

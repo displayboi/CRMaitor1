@@ -4,16 +4,20 @@
   let username = "Usuario autenticado"; // Este dato puede ser obtenido del token JWT o desde el backend
 
   onMount(() => {
-    // Si el token JWT no está presente, redirige al login
-    const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('auth_token='));
-    if (!token) {
-      window.location.href = '/dashboard'; // Cambia la ruta de login según tu aplicación
-    } else {
-      // Aquí podrías decodificar el token y obtener el nombre de usuario si lo necesitas
+  const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('auth_token='));
+  if (!token) {
+    window.location.href = '../'; // Cambia a la ruta de login
+  } else {
+    try {
       const decodedToken = JSON.parse(atob(token.split('=')[1].split('.')[1])); 
-      username = decodedToken.username; // Usar el username del token
+      username = decodedToken.username; // Decodifica el username del token
+    } catch (error) {
+      console.error("Error al decodificar el token:", error);
+      window.location.href = '../'; // Redirige si el token es inválido
     }
-  });
+  }
+});
+
 </script>
 
 <style>
@@ -69,7 +73,7 @@
     <div class="dashboard-container">
       <h1>¡Bienvenido al Dashboard!</h1>
       <p>Hola, {username}. Aquí puedes gestionar tus tareas.</p>
-      <button class="button" on:click={() => (window.location.href = "/login")}>
+      <button class="button" on:click={() => (window.location.href = "../")}>
         Cerrar sesión
       </button>
     </div>

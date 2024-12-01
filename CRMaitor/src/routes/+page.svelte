@@ -28,7 +28,9 @@
         console.log("Login exitoso, token:", token);
 
         // Guardar el token en una cookie (Secure y HttpOnly por seguridad)
-        document.cookie = `auth_token=${token}; Secure; HttpOnly`;
+        document.cookie = `auth_token=${token}; Secure`;
+
+
 
         // Redirigir al dashboard después del login exitoso
         window.location.href = '/dashboard'; // Cambiar a la ruta deseada
