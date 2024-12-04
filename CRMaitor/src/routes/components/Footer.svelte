@@ -1,20 +1,60 @@
+<script>
+  function refreshPage() {
+    window.location.reload();
+  }
+
+  function goToNewPage() {
+    window.location.href = '/nueva-pagina';
+  }
+
+  async function logout() {
+    try {
+      await fetch('/api/logout', { method: 'POST' });
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  }
+</script>
+
+<footer>
+  <button class="icon" on:click={refreshPage} type="button" aria-label="Refrescar la página">⟳</button>
+  <button class="icon" on:click={goToNewPage} type="button" aria-label="Nueva página">✚</button>
+  <button class="icon" on:click={logout} type="button" aria-label="Cerrar sesión">✕</button>
+</footer>
+
 <style>
+  footer {
+    background-color: #CCB878;
+    color: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .icon {
+    all: unset;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+
+  /* MOBILE RESPONSIVE FOOTER */
+  @media (max-width: 480px) {
     footer {
-      background-color: #d2b57d;
-      color: #333;
-      padding: 10px;
-      text-align: center;
-      display: flex;
-      justify-content: space-between;
+      flex-direction: row;
+      justify-content: space-around;
     }
+
     .icon {
-      font-size: 1.2em;
-    }
-  </style>
-  
-  <footer>
-    <span class="icon">⟳</span>
-    <span class="icon">✚</span>
-    <span class="icon">✕</span>
-  </footer>
-  
+    cursor: pointer;
+    margin: 0 10px;
+    font-size: 24px;
+    color: #322016; /* Cambia por el color que prefieras */
+    background-color: #CCB878;
+  }
+  .icon:hover {
+    color: #65462E; /* Cambia por el color que prefieras */
+  }
+  }
+</style>

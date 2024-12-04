@@ -1,17 +1,24 @@
 <script>
-    export let title = "Inicio de Sesión";
-  </script>
-  
-  <style>
+  export let title = "Inicio de Sesión";
+</script>
+
+<header>
+  {title}
+</header>
+
+<style>
+  header {
+    background-color: #CCB878;
+    color: #333;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
     header {
-      background-color: #d2b57d;
-      color: #333;
-      padding: 10px;
-      text-align: center;
-      font-size: 1.5em;
-      font-weight: bold;
+      font-size: 1.2rem;
     }
-  </style>
-  
-  <header>{title}</header>
-  
+  }
+</style>
