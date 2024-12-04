@@ -37,6 +37,12 @@
     cursor: pointer;
     font-size: 1.5rem;
     padding: 10px;
+    color: #322016; /* Cambia por el color que prefieras */
+    background-color: #CCB878;
+  }
+
+  .icon:hover {
+    color: #65462E; /* Cambia por el color que prefieras */
   }
 
   /* MOBILE RESPONSIVE FOOTER */
@@ -44,17 +50,10 @@
     footer {
       flex-direction: row;
       justify-content: space-around;
+      margin-top: 1%;
     }
 
-    .icon {
-    cursor: pointer;
-    margin: 0 10px;
-    font-size: 24px;
-    color: #322016; /* Cambia por el color que prefieras */
-    background-color: #CCB878;
-  }
-  .icon:hover {
-    color: #65462E; /* Cambia por el color que prefieras */
-  }
+
+    
   }
 </style>

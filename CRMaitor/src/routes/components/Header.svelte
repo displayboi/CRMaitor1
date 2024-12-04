@@ -9,7 +9,7 @@
 <style>
   header {
     background-color: #CCB878;
-    color: #333;
+    color: #322016;
     padding: 15px;
     text-align: center;
     font-size: 1.5rem;
