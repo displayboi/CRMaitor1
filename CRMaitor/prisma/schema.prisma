@@ -1,14 +1,16 @@
-datasource db {
-  provider = "mysql"  // Cambiar el proveedor a MySQL
-  url      = env("DATABASE_URL")
-}
-
 generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id       Int     @id @default(autoincrement())
-  username String  @unique
-  password String
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:password@localhost:3306/mydb"
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model citas {
+  fecha  DateTime @db.Date
+  texto  String   @db.VarChar(500)
+  userId Int
+  id     Int      @id @default(autoincrement())
 }

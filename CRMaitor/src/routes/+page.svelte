@@ -25,7 +25,7 @@
         const data = JSON.parse(responseText);
         token = data.token;
         document.cookie = `auth_token=${token}; Secure`;
-        window.location.href = '/dashboard';
+        window.location.href = '/dashboard';  // Redirige a la página del dashboard
       } else {
         const errorData = JSON.parse(responseText);
         errorMessage = errorData.message || "Error al iniciar sesión.";
@@ -38,10 +38,7 @@
   }
 </script>
 
-
-
 <main>
-  
   <div class="login-container">
     <Header title="Inicio de Sesión" />
     <div class="fields-container">
@@ -59,18 +56,16 @@
     {#if errorMessage}
       <p class="error-message">{errorMessage}</p>
     {/if}
+
     <Footer />
   </div>
-  
 </main>
 
-
-
 <style>
-  main{
+  main {
     margin: 5%;
-    
   }
+
   .login-container {
     max-width: 600px;
     margin: 0 auto;
@@ -108,9 +103,8 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    
   }
-  
+
   .error-message {
     color: red;
     margin-top: 20px;
@@ -146,4 +140,3 @@
     }
   }
 </style>
-

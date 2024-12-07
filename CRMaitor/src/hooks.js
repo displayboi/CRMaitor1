@@ -1,4 +1,4 @@
-
+// hooks.js
 export async function handle({ event, resolve }) {
   const secretKey = process.env.SECRET_KEY;  // Usado solo en el servidor
   console.log(secretKey); // Solo visible en el servidor

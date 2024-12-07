@@ -1,12 +1,17 @@
 <script>
+  import { goto } from '$app/navigation'; // Importar goto desde $app/navigation
+
+  // Función para refrescar la página
   function refreshPage() {
     window.location.reload();
   }
 
-  function goToNewPage() {
-    window.location.href = '/nueva-pagina';
+  // Función para redirigir al calendario
+  function showCalendar() {
+    goto('/calendario'); // Redirige a la ruta /calendario en minúsculas
   }
 
+  // Función para cerrar sesión
   async function logout() {
     try {
       await fetch('/api/logout', { method: 'POST' });
@@ -19,7 +24,7 @@
 
 <footer>
   <button class="icon" on:click={refreshPage} type="button" aria-label="Refrescar la página">⟳</button>
-  <button class="icon" on:click={goToNewPage} type="button" aria-label="Nueva página">✚</button>
+  <button class="icon" on:click={showCalendar} type="button" aria-label="Calendario">✚</button>
   <button class="icon" on:click={logout} type="button" aria-label="Cerrar sesión">✕</button>
 </footer>
 
@@ -37,23 +42,19 @@
     cursor: pointer;
     font-size: 1.5rem;
     padding: 10px;
-    color: #322016; /* Cambia por el color que prefieras */
+    color: #322016;
     background-color: #CCB878;
   }
 
   .icon:hover {
-    color: #65462E; /* Cambia por el color que prefieras */
+    color: #65462E;
   }
 
-  /* MOBILE RESPONSIVE FOOTER */
   @media (max-width: 480px) {
     footer {
       flex-direction: row;
       justify-content: space-around;
       margin-top: 1%;
     }
-
-
-    
   }
 </style>
