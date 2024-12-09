@@ -1,5 +1,5 @@
 datasource db {
-  provider = "postgresql"  // Cambiar el proveedor a MySQL
+  provider = "postgresql" // Cambiar el proveedor a MySQL
   url      = env("DATABASE_URL")
 }
 
@@ -11,12 +11,15 @@ model User {
   id       Int     @id @default(autoincrement())
   username String  @unique
   password String
+  citas    citas[] // Relación 1:N con la tabla citas
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model citas {
-  fecha  DateTime @db.Date
-  texto  String   @db.VarChar(500)
-  userId Int
-  id     Int      @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
+  fecha      DateTime @db.Date
+  texto      String   @db.VarChar(500)
+  userId     Int
+  username   String   // Nuevo campo para el nombre de usuario
+  telefono   String   // Nuevo campo para el teléfono móvil
+  user       User     @relation(fields: [userId], references: [id]) // Relación con la tabla User
 }

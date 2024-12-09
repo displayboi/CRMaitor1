@@ -16,6 +16,8 @@ export const POST = async ({ request }: { request: Request }) => {
         fecha: new Date(fecha),
         texto: texto,
         userId: userId,
+        username: username,
+        telefono: telefono
       },
     });
 
