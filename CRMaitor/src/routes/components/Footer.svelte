@@ -19,7 +19,7 @@
 
 <footer>
   <button class="icon" on:click={refreshPage} type="button" aria-label="Refrescar la página">⟳</button>
-  <button class="icon" on:click={goToNewPage} type="button" aria-label="Nueva página">✚</button>
+  
   <button class="icon" on:click={logout} type="button" aria-label="Cerrar sesión">✕</button>
 </footer>
 
@@ -47,11 +47,15 @@
 
   /* MOBILE RESPONSIVE FOOTER */
   @media (max-width: 480px) {
-    footer {
-      flex-direction: row;
-      justify-content: space-around;
-      margin-top: 1%;
-    }
+  footer {
+    position: fixed; /* Fija el footer a la parte inferior */
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Ocupa todo el ancho */
+    z-index: 1000; /* Se asegura de estar sobre otros elementos */
+    padding: 5px; /* Espaciado interno */
+    justify-content: space-around; /* Distribuye los iconos de forma equitativa */
+  }
 
 
     

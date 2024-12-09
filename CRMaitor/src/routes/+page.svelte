@@ -132,9 +132,22 @@
   }
 
   @media (max-width: 480px) {
-    .login-container {
-      padding: 10px;
-    }
+  
+  .login-container {
+    
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    margin: 0 auto; /* Mantiene centrado horizontalmente */
+    padding: 20px; /* Mantén el padding o ajusta según necesidad */
+    border-radius: 0; /* Quita los bordes redondeados si lo prefieres */
+    box-shadow: none; /* Opcional: elimina la sombra si no es necesaria */
+    display: flex; /* Para centrar contenido verticalmente */
+    flex-direction: column;
+    justify-content: center;
+  }
+  .fields-container{
+    padding-bottom:40%;
+  }
+
 
     input, button {
       font-size: 0.9rem;

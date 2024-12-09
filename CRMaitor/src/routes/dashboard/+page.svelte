@@ -72,9 +72,12 @@
   <main>
     <div class="dashboard-container">
       <h1>¡Bienvenido al Dashboard!</h1>
-      <p>Hola, {username}. Aquí puedes gestionar tus tareas.</p>
+      <p>Hola, {username}. ¡Estas logeado y autentificado!.</p>
       <button class="button" on:click={() => (window.location.href = "../")}>
         Cerrar sesión
+      </button>
+      <button class="button" on:click={() => (window.location.href = "../calendario")}>
+        Ir al Calendario
       </button>
     </div>
   </main>
