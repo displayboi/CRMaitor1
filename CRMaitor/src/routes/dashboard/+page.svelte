@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import Footer from '../components/Footer.svelte';
 
   let username = "Usuario autenticado"; // Este dato puede ser obtenido del token JWT o desde el backend
 
@@ -79,6 +80,8 @@
       <button class="button" on:click={() => (window.location.href = "../calendario")}>
         Ir al Calendario
       </button>
+      <Footer/>
     </div>
+    
   </main>
 </div>
